@@ -1,0 +1,64 @@
+[package]
+name = "himalaya-studio"
+version = "0.1.0"
+edition = "2021"
+description = "Procedural Himalayan and Indian miniature landscape paintings with a realtime studio"
+license = "MIT"
+repository = "https://github.com/incredibleamir-dot/himalaya-studio"
+keywords = ["generative-art", "procedural", "landscape", "svg", "egui"]
+categories = ["graphics", "gui"]
+rust-version = "1.95"
+
+[lib]
+name = "himalaya_studio"
+path = "src/lib.rs"
+
+[[bin]]
+name = "himalaya-studio"
+path = "src/main.rs"
+
+[[bin]]
+name = "himalaya-studio-gui"
+path = "src/gui_main.rs"
+required-features = ["gui"]
+
+[features]
+default = ["gui"]
+gui = ["dep:eframe"]
+# Keep a console attached to the GUI for stderr and panic messages while
+# developing. Release/explorer launches hide the console by default.
+gui-console = []
+
+[dependencies]
+ab_glyph = "0.2.32"
+# OpenType shaping for Devanagari inscriptions: matra reordering and conjuncts.
+harfrust = "0.12.0"
+unicode-segmentation = "1.13.3"
+# x11/wayland are not part of eframe's defaults once default-features is off,
+# and winit refuses to compile on Linux without at least one window backend.
+eframe = { version = "0.37", default-features = false, features = [
+    "glow",
+    "default_fonts",
+    "wayland",
+    "x11",
+], optional = true }
+png = "0.18.1"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = [
+    "Win32_Foundation",
+    "Win32_UI_Controls_Dialogs",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 2
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
