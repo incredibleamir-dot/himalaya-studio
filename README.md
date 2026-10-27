@@ -8,7 +8,7 @@
 
 Himalaya Studio is a standalone Rust generator and realtime desktop studio. Every painting is built from geometry — ridges, snow, trees, architecture, water, people and Devanagari inscriptions — with no bitmap assets and no machine-learning step.
 
-[![Build](https://img.shields.io/github/actions/workflow/status/incredibleamir-dot/himalaya-studio/rust.yml?label=build)](https://github.com/incredibleamir-dot/himalaya-studio/actions/workflows/rust.yml)
+[![Rust](https://github.com/incredibleamir-dot/himalaya-studio/actions/workflows/rust.yml/badge.svg)](https://github.com/incredibleamir-dot/himalaya-studio/actions/workflows/rust.yml)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-himalaya--studio-181717?logo=github)](https://github.com/incredibleamir-dot/himalaya-studio)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Rust 1.95+](https://img.shields.io/badge/Rust-1.95%2B-orange.svg)](https://www.rust-lang.org/)
